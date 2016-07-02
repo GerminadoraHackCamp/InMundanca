@@ -17,7 +17,7 @@ fs.readFile('a.xml','utf8', function(err, data) {
          var ivr = result.ListingDataFeed.Listings[0].Listing[i].ListingID[0];
 
          var priceNode = result.ListingDataFeed.Listings[0].Listing[i].Details[0].ListPrice;
-         var price = 0;
+         var price = "0";
          if (priceNode != null) {
             price = priceNode[0]._;
          }
