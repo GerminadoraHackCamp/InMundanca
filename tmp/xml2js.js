@@ -1,6 +1,6 @@
 var fs = require('fs');
 var parser = require('xml2js').parseString;
-
+var allData = {imoveis: []};
 fs.readFile('a.xml','utf8', function(err, data) {
 
     parser(data, function (err, result) {
@@ -16,7 +16,11 @@ fs.readFile('a.xml','utf8', function(err, data) {
 
          var ivr = result.ListingDataFeed.Listings[0].Listing[i].ListingID[0];
 
-         var price = result.ListingDataFeed.Listings[0].Listing[i].Details[0].ListPrice[0];
+         var priceNode = result.ListingDataFeed.Listings[0].Listing[i].Details[0].ListPrice;
+         var price = "0";
+         if (priceNode != null) {
+            price = priceNode[0]._;
+         }
 
          var reference = result.ListingDataFeed.Listings[0].Listing[i].Title[0];
          var description = result.ListingDataFeed.Listings[0].Listing[i].Details[0].Description[0];
@@ -72,7 +76,7 @@ var data =       {
              },
           };
 
-console.log(data);
+	allData.imoveis.push(data);
 
 
 
@@ -89,9 +93,11 @@ console.log(data);
 }
 
 
+	process.stdout.write(JSON.stringify(allData));
 
 
 
 
     });
 });
+
