@@ -1,0 +1,152 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1a237e">
+
+  <title>Xerdi - Home</title>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="material/css/ripples.min.css" rel="stylesheet">
+  <link href="material/css/material-wfont.min.css" rel="stylesheet">
+
+  <link href="css/flipper.css" rel="stylesheet">
+
+
+
+  <title>inmudanca</title>
+</head>
+
+<body>
+  {{> main}}
+</body>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="main">
+  <div class="navbar navbar-inverse">
+  </div>
+
+  <div class="container">
+      <div id="example-row" class="row">
+          <div class="full-card"  style="display: flex; flex-wrap: wrap; justify-content: space-between">
+             {{#each imoveis}}
+              <div class="flip-card active-card" style="max-width: 350px">
+                  <div class="card label-info">
+                      <img src="{{imgPath}}" />
+                  </div>
+                  <div class="well" style="min-height: 130px; padding-top: 5px">
+                      <h1>{{address.neighborhood}}</h1>
+                  </div>
+                  <div class="well">
+                    <ul>
+                      <li>Valor: {{price}}</li>
+                      <li>{{address.street}}, {{address.number}} - {{address.city}} - {{address.state}}</li>
+                      <li>{{broker.name}}</li>
+                      <li>{{broker.email}}</li>
+                      <li>{{broker.phone}}</li>
+                    </ul>
+                  </div>
+              </div>
+              {{/each}}
+          </div>
+      </div>
+  </div>
+
+  <!--    JAVASCRIPT DEPENENCIES      -->
+
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <script src="material/js/ripples.min.js"></script>
+  <script src="material/js/material.min.js"></script>
+
+  <script src="js/flipper.js"></script>
+
+  <script>
+      //  First bind the entire row to the flipper!
+      var flipper = new Flipper(document.getElementById("example-row"));
+
+      $("#first").click(function(e){
+          e.preventDefault();
+          flipper.setCards([{
+                  cardIndex: "0",
+                  activeIndex: "1"
+              }, {
+                  cardIndex: "1",
+                  activeIndex: "2"
+              }, {
+                  cardIndex: "2",
+                  activeIndex: "0"
+          }]);
+      });
+
+      $("#second").click(function(e){
+          e.preventDefault();
+          flipper.setCards([{
+                  cardIndex: "0",
+                  activeIndex: "0"
+              }, {
+                  cardIndex: "1",
+                  activeIndex: "1"
+              }, {
+                  cardIndex: "2",
+                  activeIndex: "2"
+          }]);
+      });
+
+      $("#third").click(function(e){
+          e.preventDefault();
+          flipper.setCards([{
+                  cardIndex: "0",
+                  activeIndex: "2"
+              }, {
+                  cardIndex: "1",
+                  activeIndex: "0"
+              }, {
+                  cardIndex: "2",
+                  activeIndex: "1"
+          }]);
+      });
+
+      var slider = document.getElementById('test5');
+        noUiSlider.create(slider, {
+         start: [20, 90],
+         connect: true,
+         step: 0,
+         range: {
+           'min': 0,
+           'max': 100
+
+         },
+         format: wNumb({
+           decimals: 2
+         })
+        });
+
+        var range = document.querySelector('#range');
+
+        noUiSlider.create(range, {
+        	start: [ 20, 80 ], // Handle start position
+        	step: 10, // Slider moves in increments of '10'
+        	margin: 20, // Handles must be more than '20' apart
+        	connect: true, // Display a colored bar between the handles
+        	direction: 'rtl', // Put '0' at the bottom of the slider
+        	orientation: 'horizontal', // Orient the slider vertically
+        	behaviour: 'tap-drag', // Move handle on tap, bar is draggable
+        	range: { // Slider can select '0' to '100'
+        		'min': 0,
+        		'max': 100
+        	},
+        	pips: { // Show a scale with the slider
+        		mode: 'steps',
+        		density: 2
+        	}
+        });
+
+
+  </script>
+
+</template>

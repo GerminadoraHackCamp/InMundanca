@@ -27,119 +27,32 @@
 
 <template name="main">
   <div class="navbar navbar-inverse">
-      <div class="navbar-header">
-
-
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="javascript:void(0)">Xerdi&nbsp;&nbsp;&nbsp;<span class="icon-material-keyboard-arrow-right"></span>&nbsp;&nbsp;&nbsp;Flipper</a>
-      </div>
   </div>
-
 
   <div class="container">
       <div id="example-row" class="row">
-
-        <!-- <input type="range" id="teste6" min="0" max="100" step="2"/> -->
-
-
-        <form action="#">
-<p class="range-field">
-<input type="range" id="test5" min="0" max="100" />
-</p>
-</form>
-
-
-
-          <div class="col-xs-12 col-md-4 full-card">
-              <div class="flip-card active-card">
+          <div class="full-card"  style="display: flex; flex-wrap: wrap; justify-content: space-between">
+             {{#each imoveis}}
+              <div class="flip-card active-card" style="max-width: 350px">
                   <div class="card label-info">
-                      <h6>1</h6>
+                      <img src="{{imgPath}}" />
                   </div>
-                  <a href="javascript:void(0)" class="btn btn-primary btn-fab btn-raised icon-material-replay" id="first"></a>
-                  <div class="well">
-                      <h1>Card 1</h1>
+                  <div class="well" style="min-height: 130px; padding-top: 5px">
+                      <h1>{{address.neighborhood}}</h1>
 
-                      <form action="#">
-                        <div id="range">teste</div>
-                        <!-- <p class="range-field"> -->
-                        <!-- </p> -->
-                      </form>
-                  </div>
-              </div>
-              <div class="flip-card">
-                  <div class="card" style="background-color: #F1BF26;color: white;">
-                      <h6>2</h6>
                   </div>
                   <div class="well">
-                      <h1>Card 2</h1>
+                    <ul>
+                      <li>Valor: {{price}}</li>
+                      <li>{{address.street}}, {{address.number}} - {{address.city}} - {{address.state}}</li>
+                      <li>{{broker.name}}</li>
+                      <li>{{broker.email}}</li>
+                      <li>{{broker.phone}}</li>
+                      <li>{{_id}}</li>
+                    </ul>
                   </div>
               </div>
-              <div class="flip-card">
-                  <div class="card alert-success">
-                      <h6>3</h6>
-                  </div>
-                  <div class="well">
-                      <h1>Card 3</h1>
-                  </div>
-              </div>
-          </div>
-          <div class="col-xs-12 col-md-4 full-card">
-              <div class="flip-card">
-                  <div class="card label-info">
-                      <h6>1</h6>
-                  </div>
-                  <a href="javascript:void(0)" class="btn btn-primary btn-fab btn-raised icon-material-replay" id="second"></a>
-                  <div class="well">
-                      <h1>Card 1</h1>
-                  </div>
-              </div>
-              <div class="flip-card active-card">
-                  <div class="card" style="background-color: #F1BF26;color: white;">
-                      <h6>2</h6>
-                  </div>
-                  <div class="well">
-                      <h1>Card 2</h1>
-                  </div>
-              </div>
-              <div class="flip-card">
-                  <div class="card alert-success">
-                      <h6>3</h6>
-                  </div>
-                  <div class="well">
-                      <h1>Card 3</h1>
-                  </div>
-              </div>
-          </div>
-          <div class="col-xs-12 col-md-4 full-card">
-              <div class="flip-card">
-                  <div class="card label-info">
-                      <h6>1</h6>
-                  </div>
-                  <a href="javascript:void(0)" class="btn btn-primary btn-fab btn-raised icon-material-replay" id="third"></a>
-                  <div class="well">
-                      <h1>Card 1</h1>
-                  </div>
-              </div>
-              <div class="flip-card">
-                  <div class="card" style="background-color: #F1BF26;color: white;">
-                      <h6>2</h6>
-                  </div>
-                  <div class="well">
-                      <h1>Card 2</h1>
-                  </div>
-              </div>
-              <div class="flip-card active-card">
-                  <div class="card alert-success">
-                      <h6>3</h6>
-                  </div>
-                  <div class="well">
-                      <h1>Card 3</h1>
-                  </div>
-              </div>
+              {{/each}}
           </div>
       </div>
   </div>
